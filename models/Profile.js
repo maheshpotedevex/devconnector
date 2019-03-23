@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const ProfileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "users" // Collection
+    ref: "users"
   },
   handle: {
     type: String,
@@ -26,7 +26,7 @@ const ProfileSchema = new Schema({
     required: true
   },
   skills: {
-    type: [String], // Array string.
+    type: [String],
     required: true
   },
   bio: {
@@ -42,21 +42,22 @@ const ProfileSchema = new Schema({
         required: true
       },
       company: {
-        type: String
+        type: String,
+        required: true
       },
       location: {
         type: String
       },
       from: {
         type: Date,
-        require: true
+        required: true
       },
       to: {
         type: Date
       },
       current: {
         type: Boolean,
-        dafault: false
+        default: false
       },
       description: {
         type: String
@@ -71,11 +72,11 @@ const ProfileSchema = new Schema({
       },
       degree: {
         type: String,
-        require: true
+        required: true
       },
       fieldofstudy: {
         type: String,
-        require: true
+        required: true
       },
       from: {
         type: Date,
@@ -86,7 +87,7 @@ const ProfileSchema = new Schema({
       },
       current: {
         type: Boolean,
-        dafault: false
+        default: false
       },
       description: {
         type: String
@@ -107,9 +108,6 @@ const ProfileSchema = new Schema({
       type: String
     },
     instagram: {
-      type: String
-    },
-    google: {
       type: String
     }
   },
