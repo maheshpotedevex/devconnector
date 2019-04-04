@@ -6,9 +6,35 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Dashbaord from "./components/dashboard/Dashboard";
 import "./App.css";
 import store from "./store";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+import Dashboard from "./components/dashboard/Dashboard";
+import { clearCurrentProfile } from "./actions/profileActions.js";
 
+// Check for token
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+
+  // Check for expired token.
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    // Logout User
+    store.dispatch(logoutUser());
+    // TODO: Clear current profile
+    store.dispatch(clearCurrentProfile());
+    // Redirect to the login.
+    window.location.href = "/login";
+  }
+}
 class App extends Component {
   render() {
     return (
@@ -20,6 +46,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/Dashboard" component={Dashboard} />
             </div>
             <Footer />
           </div>

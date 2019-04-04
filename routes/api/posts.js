@@ -7,7 +7,6 @@ const Post = require("../../models/Post");
 const Profile = require("../../models/Profile");
 // Validation
 const validatePostInput = require("../../validation/post");
-
 // Create router
 // @route GET api/posts/test
 // @desc Tests posts route
