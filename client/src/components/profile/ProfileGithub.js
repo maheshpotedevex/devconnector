@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class ProfileGithub extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clientId: '26c196bacea7db10cf48',
-      clientSecret: '0885cb690e07d2a93a6afb0891fb552fd9f7aa53',
+      clientId: "be1d4c6307f1b9390bf6",
+      clientSecret: "8def2380d52d8b832e82b8e9e6c9edf11297a7c5",
       count: 5,
-      sort: 'created: asc',
+      sort: "created: asc",
       repos: []
     };
   }
@@ -32,7 +32,6 @@ class ProfileGithub extends Component {
 
   render() {
     const { repos } = this.state;
-
     const repoItems = repos.map(repo => (
       <div key={repo.id} className="card card-body mb-2">
         <div className="row">
